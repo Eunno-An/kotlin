@@ -32,3 +32,16 @@ var list = map.filterValues{it >= k}
 ```
   
   
+groupBy
+keySelector 함수에서 반환된 키로 그룹화하고, 각 그룹 키가 해당 요소 목록과 연결된 맵을 반환한다.
+원래 요소의 순서를 그대로 갖고 있다!
+```
+val words = listOf("a", "abc", "ab", "def", "abcd")
+val byLength = words.groupBy{it.length}
+println(byLength.keys) // [1, 3, 2, 4]
+println(byLength.values) // [[a], [abc, def], [ab], [abcd]]
+
+val mutableByLength: MutableMap<Int, MutableList<String>> = words.groupByTo(mutableMapOf()){it.length}
+
+```
+  
